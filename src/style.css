@@ -1,0 +1,18 @@
+body{
+     background-color: rgb(111, 176, 110);
+     font-size: 2vw;
+     
+     text-align: center;
+     
+}
+
+.header{
+     color: white;
+     font-size: 3vw;
+     background-color: rgb(33, 69, 32);
+     padding: 3vw;
+     margin-bottom: 5%;
+}
+h2{
+     font-size:2vw;
+}
