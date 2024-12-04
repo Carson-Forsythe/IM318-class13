@@ -1,20 +1,40 @@
 <script>
+  import { onMount } from "svelte";
+
+
 let todoItem = $state('');
 let todoList = $state([]);
+let doneList = $state([]);
+let storedList;
 
-function addItem(){
+onMount(() => {
+     storedList = localstorage.getItem('storedList');
+     if (storedList) {
+          todoList = (JSON.parse(storedList));
+     }
+})
+function updateList(){
+     return storedList = localStorage.setItem('storedItem', JSON.stringify (todoList));
+}
+
+
+function addItem(event){
      event.preventDefault();
      if (todoItem ==''){
           return;
      }
-     todoList =[...todoList,{
-      text: todoItem,
-      done: false
-}]
-     todoItem= '';
+     todoList = [...todoList,{
+          text: todoItem,
+          done: false
+     
+     }];
+    
+     updateList();
+     todoItem= ''; 
 }
 function removeItem(index){
      todoList = todoList.toSpliced(index, 1);
+     updateList();
 }
 function nuke(){
      todoList = [];
